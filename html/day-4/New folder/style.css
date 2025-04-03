@@ -1,0 +1,43 @@
+.wsjodhpur{
+	background-color: red;
+	color: white;
+	width: 100px;
+	height: 100px;
+}
+.myHeading{
+	width: 500px;
+	height: 200px;
+	background-color: blueviolet;
+}
+
+
+.box{
+	width: 500px;
+	height: 400px;
+/*	border: 10px solid blue ;*/
+	border-top: 2px solid darkred;
+	border-bottom: 5px dashed green;
+	border-right: 8px double gray;
+	border-left: 20px solid blue;
+
+}
+
+.ws{
+	width: 200px;
+	height: 200px;
+	background-color: red;
+/*	border-radius: 200px;*/
+	border-radius: 10px 20px 30px 40px;
+}
+
+.myP{
+	width: 500px;
+	height: 200px;
+	background-color: gray;
+	color: darkred;
+	font-size: 30px;
+/*	text-decoration: underline;*/
+/*    text-decoration:overline ;*/
+/*text-decoration: line-through;*/
+  text-align: right;
+}
