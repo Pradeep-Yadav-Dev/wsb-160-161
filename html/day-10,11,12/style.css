@@ -1,0 +1,225 @@
+.body{
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    /* box-sizing: content-box; */
+}
+.aClass{
+    color: black;
+    text-decoration: none;
+}
+/* row-1 */
+.row-1{
+    width: 980px;
+    margin: auto;
+    /* border: 2px solid red; */
+    height: 50px;
+    color: white;
+    display: flex;
+    align-items: center;
+    background-color: #343130;
+    padding: 0px 10px;
+    
+}
+
+.row-1 .left{
+    width: 50%;
+    height: 100%;
+    /* border: 2px solid red; */
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+}
+.row-1 .right{
+    width: 50%;
+    height: 100%;
+    /* border: 2px solid red; */
+    
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.row-1 .left .span{
+    font-size: 20px;
+    /* border: 1px solid blue; */
+    
+}
+
+.img{
+    /* border: 1px solid blue; */
+   
+}
+
+/* row-2 */
+.row-2{
+    width: 1000px;
+    margin: auto;
+    /* border: 2px solid red; */
+    height: 160px;
+    background-color: white;
+    display: flex;
+    align-items: end;
+}
+.row-2 .left{
+    width: 30%;
+    height: 100%;
+    /* border: 2px solid blue; */
+}
+.row-2 .right{
+    width: 70%;
+    height: 100%;
+    /* border: 2px solid blue; */
+    display: flex;
+    align-items: end;
+    font-weight: bold;
+}
+.menu{
+    list-style: none;
+    display: flex;
+    
+}
+.menuItem{
+    /* border: 1px solid red; */
+    padding: 10px 30px;
+}
+
+.row-2-img{
+    /* border: 1px solid red; */
+}
+
+/* start 3  */
+
+.row-3{
+    width: 970px;
+    height: 800px;
+    background-color: #ccc;
+    margin: auto;
+    padding: 15px;
+}
+
+.inner-row-3{
+    width: 98%;
+    height: 100%;
+    background-color: white;
+   display: flex;
+   padding: 10px;
+}
+
+.inner-row-3 .left{
+    width: 30%;
+    /* border: 2px solid red; */
+    height: 800px;
+}
+.inner-row-3 .right{
+    width: 70%;
+    /* border: 2px solid red; */
+    height: 800px;
+    padding-left: 10px;
+}
+.inner-row-3 .left .leftTop{
+    width: 100%;
+    height: 270px;
+    /* border: 2px solid; */
+
+}
+.inner-row-3 .left .leftTop .box{
+    width: 100%;
+    height: 40px;
+    background-color: skyblue;
+    margin: 10px 0px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: white;
+}
+.inner-row-3 .left .leftBottom{
+    width: 100%;
+    height: 330px;
+   
+}
+.row-3 .News{
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    background-color: orange;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    border-radius: 15px 15px 0 0 ;
+}
+
+.row-3 .ulParent{
+    border: 1px solid;
+}
+.row-3 .ulClass{
+    font-size: 18px;
+   
+}
+.row-3 .ulClass .liClass{
+    padding: 10px 0px;
+    
+}
+.row-3 .ulClass .liClass::marker{
+    color: orange;
+    font-size: 22px;
+}
+.inner-row-3 .right .bigImage .img{
+    width: 100%;
+}
+
+.inner-row-3 .right  .course{
+    width: 100%;
+    display: flex;
+}
+.inner-row-3 .right  .course .left{
+    width: 30%;
+    height: 80px;
+    background-color: #ccc;
+}
+.inner-row-3 .right  .course .right{
+    width: 70%;
+    height: 20px;
+    background-color: #ccc;
+}
+
+
+/* formUpperDiv */
+.formUpperDiv{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+}
+.row .l{
+    width: 15%;
+    /* border: 1px solid red; */
+}
+
+.row .r{
+    width: 70%;
+    /* border: 1px solid red; */
+}
+.myInput{
+    padding: 10px;
+    width: 80%;
+  
+}
+.myInput::placeholder{
+    color: red;
+}
+
+
+
+.textarea{
+    width: 80%;
+    height: 120px;
+    resize: none;
+}
