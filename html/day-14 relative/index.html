@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .header {
+            width: 100%;
+            border: 1px solid red;
+            padding: 45px 0px;
+            background-color: #ccc;
+            font-weight: bold;
+            font-size: 25px;
+
+        }
+
+        .header>ul {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .header>ul>li {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .subMenu {
+            background-color: aqua;
+            padding: 15px;
+            position: absolute;
+            top: 295%;
+            left: -26%;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.5s;
+        }
+        .header>ul>li:hover .subMenu{
+            opacity: 1;
+            visibility: visible;
+            top: 255%;
+        }
+        .newClass{
+            background-color: pink;
+        }
+        .subSubMenu{
+            background-color: green;
+            position: absolute;
+            left: 100%;
+            top:0%;
+            font-size: 16px;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .header>ul>li> .subMenu>ul>li:hover .subSubMenu{
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <ul>
+            <li>Home
+                <div class="subMenu">
+                    <ul>
+                        <li>Jodhpur
+                            <div class="subSubMenu">
+                                <ul>
+                                    <li> Ratanada </li>
+                                    <li>bkt</li>
+                                    <li>kbhb</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>Jaipur</li>
+                        <li>Udaipur
+                            <div class="subSubMenu">
+                                <ul>
+                                    <li> Ratanada  11111111</li>
+                                    <li>bkt</li>
+                                    <li>kbhb</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>About
+                <div class="subMenu">
+                    <ul>
+                        <li>Jodhpur 2</li>
+                        <li>Jaipur 2</li>
+                        <li>Udaipur 2</li>
+                    </ul>
+                </div>
+            </li>
+            <li>Gallery</li>
+            <li>Contact
+                <div class="subMenu newClass">
+                    <ul>
+                        <li>Jodhpur 2</li>
+                        <li>Jaipur 2</li>
+                        <li>Udaipur 2</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
