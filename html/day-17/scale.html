@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 400px;
+            height: 400px;
+            border: 5px solid red;
+            margin:70px auto;
+            background-color: #ccc;
+            overflow: hidden;
+            
+        }
+       
+        .box img{
+            width: 100%;
+            height: 100%;
+            transition: 1s;
+        }
+        .box img:hover{
+            transform: scale(1.1);
+        }
+        .ws{
+            width: 400px;
+            height: 400px;
+            border: 1px solid;
+            margin:20px  auto;
+            background-image: url("https://wscubetech.co/Assignments/Assigment-13/image-effect/images/1.jpg");
+            background-size: cover;
+            transition: 1s;
+            /* border-radius: 50%; */
+        }
+
+        .content{
+            width: 100%;
+            height: 100%;
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            transform-origin: bottom;
+            /* transform: scale(0,0); */
+            /* transform: scaleY(0); */
+            /* transition: 1s; */
+            display: none;
+        }
+        .content p{
+            font-size: 22px;
+        }
+
+        .ws:hover .content{
+            /* transform: scaleY(1); */
+            /* transform: scale(1,1); */
+        }
+
+        .ws:hover{
+            /* transform: rotate(70deg); */
+            transform: rotateY(120deg);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- <div class="box">
+        <img src="https://packshifts.in/images/bike-shifting.jpg" alt="">
+    </div> -->
+
+
+    <div class="ws">
+        <div class="content">
+            <h1> Welcome to ws </h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ducimus facere, eum omnis eaque ea beatae id aut perferendis nesciunt. Tempora laborum tenetur illum neque pariatur quasi, earum soluta aut!
+            </p>
+        </div>
+    </div>
+    
+</body>
+</html>

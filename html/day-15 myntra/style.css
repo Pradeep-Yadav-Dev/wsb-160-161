@@ -1,0 +1,92 @@
+*{
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.header{
+    width: 100%;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-between;
+    background-color: antiquewhite;
+}
+.headerLeft{
+    width: 50%;
+    /* border: 2px solid; */
+   
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.rightHeader{
+    width: 50%;
+    /* border: 2px solid; */
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px 0px;
+}
+.headerLeft img{
+    width: 10%;
+    height: 80px;
+    /* border: 1px solid; */
+}
+.headerLeft>ul{
+    display: flex;
+    position: relative;
+}
+.headerLeft>ul>li{
+    padding: 0px 15px;
+    
+    cursor: pointer;
+}
+
+.rightHeader .l{
+    width: 60%;
+    background-color: #F5F5F6;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+.rightHeader .l input{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    margin-left: 15px;
+}
+.rightHeader .r{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* border: 1px solid; */
+    text-align: center;
+    
+}
+.rightHeader .r i{
+    display: block;
+}
+
+.megaMenu{
+    width: 70vw;
+    height: 300px;
+    background-color: aqua;
+    position: absolute;
+    top: 266%;
+    left: 2%;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    transition: 1s;
+}
+.megaMenu .box{
+    width: 20%;
+    height: 100%;
+    border: 2px solid blue;
+}
+.headerLeft>ul>li:hover .megaMenu{
+    opacity: 1;
+    visibility: visible;
+}

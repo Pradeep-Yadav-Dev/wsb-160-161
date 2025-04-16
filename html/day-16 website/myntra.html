@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .main {
+            width: 800px;
+            /* border: 2px solid red; */
+            height: 500px;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .face {
+            width: 220px;
+            height: 220px;
+            background-color: blue;
+            border-radius: 50%;
+            margin: auto;
+        }
+
+        .leftEye {
+            width: 25px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 9%;
+            left: 43%;
+        }
+
+        .blackInner {
+            width: 10px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: black;
+            position: absolute;
+            top: 45%;
+            left: 28%;
+        }
+
+        .whiteInner {
+            width: 3px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: white;
+            position: absolute;
+            top: 35%;
+            left: 33%;
+        }
+
+        .rightEye {
+            width: 25px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 9%;
+            left: 53%;
+        }
+
+        .mouth {
+            width: 60px;
+            height: 47px;
+            border-radius: 0 0 50% 50%;
+            background-color: white;
+            position: absolute;
+            top: 27%;
+            left: 46%;
+        }
+
+        .innertongue {
+            width: 40px;
+            height: 40px;
+            border-radius: 0 0 50% 50%;
+            background-color: red;
+            position: absolute;
+            top: 0%;
+            left: 18%;
+        }
+
+        .tie {
+            width: 83px;
+            height: 20px;
+            /* border: 1px solid white; */
+            background-color: red;
+            position: absolute;
+            top: 42%;
+            left: 45%;
+            border-radius: 50px;
+        }
+
+        .tiecircle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: yellow;
+            position: absolute;
+            left: 38%;
+        }
+
+        .body {
+            width: 200px;
+            height: 200px;
+            /* border: 2px solid white; */
+            border-radius: 40px 40px 0px 0px;
+            z-index: -99;
+            background-color: blue;
+            position: absolute;
+            top: 43%;
+            left: 37%;
+        }
+
+        .footer-left {
+            width: 120px;
+            height: 50px;
+            background-color: white;
+            border-radius: 40px;
+            position: absolute;
+            top: 80%;
+            left: 35%;
+        }
+        .footer-right{
+            width: 120px;
+            height: 50px;
+            background-color: white;
+            border-radius: 40px;
+            position: absolute;
+            top: 80%;
+            left: 49%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="face">
+
+            <div class="leftEye">
+                <div class="blackInner">
+                    <div class="whiteInner"></div>
+                </div>
+            </div>
+
+            <div class="rightEye">
+                <div class="blackInner">
+                    <div class="whiteInner"></div>
+                </div>
+            </div>
+            <div class="mouth">
+                <div class="innertongue"></div>
+            </div>
+
+
+            <div class="tie">
+                <div class="tiecircle"></div>
+
+            </div>
+
+            <div class="body"></div>
+
+            <div class="footer-left"></div>
+            <div class="footer-right"></div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

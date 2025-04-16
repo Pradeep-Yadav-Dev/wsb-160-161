@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        @keyframes bgChanger{
+            0%{
+                background-color: red;
+            }
+            50%{
+                background-color: yellow;
+            }
+            100%{
+                background-color: red;
+            }
+        }
+
+        @keyframes trucks{
+            0%{
+                position: fixed;
+                right: -30%;
+                /* top: 50%; */
+            }
+            100%{
+                position: fixed;
+                right: 100%;
+                /* top: 0%; */
+                transform:scale(2)  rotate(360deg) ;
+            }
+        }
+
+
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 2px solid red;
+            animation:bgChanger 1s 0s infinite linear ;
+        }
+
+        .truck{
+            /* border: 1px solid red; */
+            animation: trucks 4s 0s infinite linear;
+        }
+
+        .truck1{
+            animation: trucks 4s 1s infinite linear;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box"></div>
+
+        <img class="truck" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3jrWKIXpOQkACfNSbhBS0sweeW7rRrkuWJA&s" alt="">
+
+        <img class="truck1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3jrWKIXpOQkACfNSbhBS0sweeW7rRrkuWJA&s" alt="">
+
+    
+</body>
+</html>
