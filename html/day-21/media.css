@@ -1,0 +1,21 @@
+@media only screen and (min-width:200px) and (max-width:567px){
+    header nav aside:nth-child(2){
+        display: none;
+    }
+
+    header nav aside:nth-child(1){
+        
+        margin: auto;
+    }
+
+    /* banner */
+    #banner aside:nth-child(1){
+        width: 100%;
+        text-align: center;
+    }
+    
+    #banner aside:nth-child(2){
+        width: 100%;
+    }
+}
+

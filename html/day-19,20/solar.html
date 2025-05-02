@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+
+        }
+
+        body {
+            background-color: black;
+        }
+
+        @keyframes solar {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .main {
+            width: 1000px;
+            height: 600px;
+            border: 2px solid red;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .sun {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            border-radius: 50%;
+            position: absolute;
+            top: 40%;
+            left: 45%;
+
+        }
+
+        .orbit-1 {
+            width: 160px;
+            height: 160px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            position: absolute;
+            top: 35%;
+            left: 42%;
+            animation: solar 3s 0s linear infinite;
+        }
+
+        .planet-1 {
+            width: 20px;
+            height: 20px;
+            background-color: aqua;
+            border-radius: 50%;
+            position: absolute;
+            top: -7%;
+            left: 42%;
+
+
+        }
+
+
+        .orbit-2 {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            position: absolute;
+            top: 32%;
+            left: 40%;
+            animation: solar 3s 1s linear infinite;
+        }
+
+        .planet-2 {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(18, 188, 27);
+            border-radius: 50%;
+            position: absolute;
+            top: -7%;
+            left: 42%;
+            animation: solar 2s 0s linear infinite;
+
+
+        }
+        .secPlanet{
+            width: 10px;
+            height: 10px;
+            background-color: rgb(225, 135, 18);
+            border-radius: 50%;
+            position: absolute;
+            top: 12%;
+            left: 108%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="sun"></div>
+
+        <div class="orbit-1">
+            <div class="planet-1"></div>
+        </div>
+
+        <div class="orbit-2">
+            <div class="planet-2">
+                <div class="secPlanet"></div>
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+
+</html>

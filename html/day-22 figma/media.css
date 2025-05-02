@@ -1,0 +1,25 @@
+@media only screen and (min-width:200px) and (max-width:567px){
+    nav .right{
+        display: none;
+    }
+    nav aside:nth-child(1){
+        /* border: 1px solid red; */
+        margin: auto;
+    }
+
+    #banner .left {
+        width: 100%;
+        
+    }
+    
+    #banner .right {
+        width: 100%;
+       
+    }
+
+    #banner .left h1 {
+        font-size: 32px;
+        line-height: 30px;
+    
+    }
+}
