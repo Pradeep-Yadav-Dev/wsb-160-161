@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 800px;
+            margin: auto;
+            background-color: skyblue;
+            font-size: 30px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        hello ws
+    </div>
+
+    <button onclick="updateWork()" > update </button>
+    
+</body>
+<script>
+
+    let box=document.querySelector(".box")
+    let userValue=prompt("enter value")
+
+
+    let updateWork=function(){
+        box.innerHTML=userValue
+    }
+
+
+</script>
+</html>

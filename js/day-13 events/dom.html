@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .btn{
+            padding: 20px 25px;
+            background-color: skyblue;
+            font-size: 25px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+
+    <button class="btn" onclick="ws()" > click </button>
+
+     <button class="btn" onclick="jaipur()" > save </button>
+
+      <button class="btn"  ondblclick="ratanada()"  > db click </button>
+
+
+      <form onsubmit="userForm()" >
+        <input type="text" placeholder="name" />
+        <input type="text" placeholder="name" />
+        <input type="text" placeholder="name" />
+        <input type="text" placeholder="name" />
+        <input type="text" placeholder="name" />
+
+        <button> save </button>
+      </form>
+
+</body>
+
+<script>
+
+    const userForm=()=>{
+        alert("saved your form")
+    }
+
+    function ws(){
+        alert("hello ws")
+    }
+
+     function jaipur(){
+        alert("hello jaipur")
+    }
+
+     function jodhpur(){
+        alert("hello jodhpur")
+    }
+
+     function ratanada(){
+        alert("hello ratanada")
+    }
+
+    window.onload(alert("hello"))
+
+
+</script>
+</html>

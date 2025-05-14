@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            width: 800px;
+            height: 400px;
+           
+            margin: auto;
+        }
+        .main input{
+            width: 90%;
+            padding: 10px;
+        }
+        .main button{
+            padding: 25px;
+            font-size: 30px;
+            border: none;
+            background-color: aqua;
+
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <input type="password" placeholder="enter yoyr password" >
+        <button>show password</button>
+    </div>
+    
+</body>
+<script>
+
+    let input=document.querySelector(".main input")
+    let btn=document.querySelector(".main button")
+
+    btn.addEventListener("click",()=>{
+        if(input.type=="password"){
+           input.type="text"
+           btn.innerHTML="hide password"
+        }
+        else{
+           input.type="password"
+           btn.innerHTML="show password"
+        }
+    })
+
+</script>
+</html>

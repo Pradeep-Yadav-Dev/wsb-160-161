@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button> - </button>
+    <h3> 0 </h3>
+    <button> + </button>
+
+</body>
+<script>
+
+    let btn1 = document.querySelectorAll("button")[0]
+    let btn2 = document.querySelectorAll("button")[1]
+    let h3 = document.querySelector("h3")
+    let count = 0
+
+    // btn2.onclick=()=>{
+    //     alert("hello")
+    // }
+
+    btn2.addEventListener("click", () => {
+        // a++
+        // ++aa
+        // a+=1
+        // a=a+1
+        count++
+        h3.innerHTML = count
+
+
+    })
+
+    btn1.addEventListener("click", () => {
+
+        if (count > 0) {
+            count--
+            h3.innerHTML = count
+        }
+        else{
+            alert("please add one item")
+        }
+
+
+
+    })
+
+
+
+
+</script>
+
+</html>

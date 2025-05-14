@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 400px;
+            padding: 10px;
+            background-color: #ccc;
+            border: 5px solid red;
+            margin: auto;
+        }
+
+        .activeClass {
+            color: red;
+            background-color: aqua;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p>
+            Redefining the standards of elegant living with meticulously planned apartments or flats in Zirakpur that
+            are crafted with sophisticated taste, Uptown Skylla Zirakpur has outdone its residential stature with
+            impeccable
+        </p>
+    </div>
+
+    <button onclick="addCss()"> add Css </button>
+    <button onclick="removeCss()"> remove Css </button>
+
+    <button onclick="toggleCss()"> toggle Css </button>
+</body>
+
+<script>
+    let boxss = document.querySelector(".box")
+
+    const addCss = function () {
+        boxss.classList.add("activeClass")
+    }
+
+    const removeCss = function () {
+        boxss.classList.remove("activeClass")
+    }
+
+
+    const toggleCss=()=>{
+        boxss.classList.toggle("activeClass")
+    }
+
+
+
+
+</script>
+
+</html>

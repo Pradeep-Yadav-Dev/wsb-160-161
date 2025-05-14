@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            max-width: 1200px;
+            height: 100vh;
+            border: 5px solid red;
+            margin: auto;
+        }
+
+        button {
+            padding: 10px 30px;
+            background-color: red;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .modal {
+            width: 400px;
+            height: 300px;
+            background-color: #991717;
+            position: fixed;
+            left: 30%;
+            top: -50%;
+            font-size: 30px;
+            transition: 1s;
+
+        }
+
+        .activeModal {
+            top: 10% !important;
+        }
+
+        span {
+            font-size: 30px;
+            background-color: aqua;
+            padding: 10px;
+            border-radius: 50%;
+            position: absolute;
+            right: 10%;
+            cursor: pointer;
+        }
+
+        .overlay {
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            display: none;
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <button> Show Modal </button>
+
+        <div class="overlay">
+            <div class="modal ">
+                form
+
+                <input type="text" placeholder="enter name">
+                <span> X </span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+    let btn = document.querySelector("button")
+    let modal = document.querySelector(".modal")
+    let spanBtn = document.querySelector("span")
+    let overlay = document.querySelector(".overlay")
+
+    btn.addEventListener("click", () => {
+        overlay.style.display = "block"
+        modal.classList.add("activeModal")
+
+    })
+
+    spanBtn.addEventListener("click", () => {
+        overlay.style.display = "none"
+        modal.classList.remove("activeModal")
+    })
+
+    overlay.addEventListener("click", (e) => {
+
+
+        if (e.target == overlay) {
+            overlay.style.display = "none";
+            modal.classList.remove("activeModal");
+        }
+
+
+
+
+    });
+
+
+</script>
+
+</html>

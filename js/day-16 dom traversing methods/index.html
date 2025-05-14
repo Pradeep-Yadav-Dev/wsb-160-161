@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .row{
+            width: 800px;
+            padding: 10px;
+            background-color: #ccc;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+     
+
+    <div class="row">
+        <p>A</p>
+        <h1>hello class 1</h1>
+         <p>B</p>
+    </div>
+
+    <div class="row">
+        <p>A</p>
+
+        ws
+        <h1>hello class 2</h1>
+
+        pradeep
+
+         <p>B</p>
+    </div>
+
+    <div class="row">
+        <p>A</p>
+        <h1>hello class 3</h1>
+         <p>B</p>
+    </div>
+
+    <div class="row">
+
+        pppppppppppppppppppppppppppp
+        <p>A</p>
+        <h1>hello class 4</h1>
+         <p>B</p>
+
+         kkkkkkkkkkkkkkkkkkkkkkkkkk
+    </div>
+
+    
+    
+
+    
+</body>
+<script>
+
+    let h3=document.querySelectorAll("h1")
+
+    let allrow=document.querySelectorAll(".row")
+
+    h3.forEach((v,i)=>{
+        v.addEventListener("click",()=>{
+            // console.log(v.previousElementSibling)
+            // console.log(v.nextElementSibling)
+
+            // console.log(v.nextSibling)
+            // console.log(v.nextElementSibling)
+
+            // console.log(v.previousElementSibling)
+            // console.log(v.previousSibling)
+            
+        })
+    })
+
+
+
+    allrow.forEach((v,i)=>{
+       v.addEventListener("click",()=>{
+        // console.log(v.nextElementSibling)
+
+        // console.log(v.firstChild)
+
+        // console.log(v.lastChild)
+
+        // console.log(v.lastElementChild)
+
+        // console.log(v.firstElementChild)
+
+        console.log(v.children[1])
+           console.log(v.children[0])
+              console.log(v.children[2])
+       })
+    })
+
+</script>
+</html>
