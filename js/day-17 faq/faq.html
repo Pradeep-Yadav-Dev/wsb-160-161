@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .main {
+            width: 1200px;
+            margin: auto;
+            /* border: 2px solid red; */
+        }
+
+        .row {
+            width: 80%;
+            padding: 10px 0px;
+            background-color: #ccc;
+            margin: 5px;
+        }
+
+        .row h3 {
+            cursor: pointer;
+        }
+
+        .row p {
+            background-color: aqua;
+            padding: 5px;
+            display: none;
+        }
+
+        .active {
+            display: block !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="row">
+            <h3>question 1 <i class="fa-solid fa-plus"></i></h3>
+            <p>Netflix is flexible. There are no annoying contracts and no commitments. You can easily cancel your
+                account online in two clicks. There are no cancellation fees – start or stop your account anytime. 1</p>
+        </div>
+
+        <div class="row">
+            <h3>question 2 <i class="fa-solid fa-plus"></i></h3>
+            <p>Netflix is flexible. There are no annoying contracts and no commitments. You can easily cancel your
+                account online in two clicks. There are no cancellation fees – start or stop your account anytime. 2</p>
+        </div>
+
+        <div class="row">
+            <h3>question 3 <i class="fa-solid fa-plus"></i></h3>
+            <p>Netflix is flexible. There are no annoying contracts and no commitments. You can easily cancel your
+                account online in two clicks. There are no cancellation fees – start or stop your account anytime. 3</p>
+        </div>
+
+        <div class="row">
+            <h3>question 4 <i class="fa-solid fa-plus"></i></h3>
+            <p>Netflix is flexible. There are no annoying contracts and no commitments. You can easily cancel your
+                account online in two clicks. There are no cancellation fees – start or stop your account anytime. 4</p>
+        </div>
+
+        <div class="row">
+            <h3>question 5 <i class="fa-solid fa-plus"></i> </h3>
+            <p>Netflix is flexible. There are no annoying contracts and no commitments. You can easily cancel your
+                account online in two clicks. There are no cancellation fees – start or stop your account anytime. 5</p>
+        </div>
+    </div>
+
+</body>
+<script>
+    let allH3 = document.querySelectorAll("h3")
+
+    allH3.forEach((v, i) => {
+        v.addEventListener("click", () => {
+
+            allH3.forEach((p, k) => {
+                if (i != k) {
+                    p.nextElementSibling.classList.remove("active")
+                    
+                    p.children[0].classList.add("fa-plus")
+                    p.children[0].classList.remove("fa-minus")
+                  
+                }
+            })
+            v.nextElementSibling.classList.toggle("active")
+
+            v.children[0].classList.toggle("fa-minus")
+            v.children[0].classList.toggle("fa-plus")
+
+        })
+
+
+    })
+
+</script>
+
+</html>

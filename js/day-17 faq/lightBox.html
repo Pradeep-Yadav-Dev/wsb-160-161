@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            max-width: 1200px;
+            margin: 20px auto;
+            box-shadow: 0px 0px 10px 3px #ccc;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 23%;
+            margin: 1%;
+            height: 300px;
+            cursor: pointer;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .lightBox {
+            width: 500px;
+            height: 400px;
+            box-shadow: 0px 0px 10px 5px #ccc;
+            background-color: white;
+            padding: 10px;
+            position: fixed;
+            top: 10%;
+            left: 30%;
+            transform: scale(0);
+            transition: 0.8s;
+        }
+
+        .lightBox img {
+            width: 100%;
+            height: 95%;
+        }
+
+        .active {
+            transform: scale(1);
+        }
+
+        span {
+            cursor: pointer;
+        }
+
+        span:nth-child(2) {
+            background-color: aqua;
+            padding: 10px;
+            position: absolute;
+            top: 36%;
+            left: 0%;
+        }
+
+        span:nth-child(3) {
+            background-color: aqua;
+            padding: 10px;
+            position: absolute;
+            top: 36%;
+            left: 96%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="box ">
+            <img src="https://i.pinimg.com/736x/e8/04/0f/e8040fdc4d3646f6b1ef342bfa8af4f7.jpg" alt="">
+        </div>
+
+        <div class="box">
+            <img src="https://i.pinimg.com/736x/cf/a2/49/cfa2496520d4a06834b038bd1a70b557.jpg" alt="">
+        </div>
+
+        <div class="box">
+            <img src="https://i.pinimg.com/736x/b5/85/cf/b585cf920740ca2524045087f3187f60.jpg" alt="">
+        </div>
+
+        <div class="box">
+            <img src="https://i.pinimg.com/736x/ac/59/99/ac5999ac36d68959393b9d2a4bd22322.jpg" alt="">
+        </div>
+
+        <div class="box">
+            <img src="https://i.pinimg.com/736x/af/9b/3e/af9b3e43383b5d49f998acc99226d4fa.jpg" alt="">
+        </div>
+
+        <div class="box">
+            <img src="https://i.pinimg.com/736x/33/8e/65/338e653c969cb3696ce2f91f69528565.jpg" alt="">
+        </div>
+
+        <div class="box">
+            <img src="https://i.pinimg.com/736x/7b/f7/e9/7bf7e99222fdd7e134da9a0d552f8652.jpg" alt="">
+        </div>
+
+        <div class="box">
+            <img src="https://i.pinimg.com/736x/63/85/77/6385777d0a939739c85c2fbb0a1e3045.jpg" alt="">
+        </div>
+    </div>
+
+
+    <div class="lightBox ">
+        <span> X </span>
+        <span>
+            < </span>
+                <span> > </span>
+                <img src="https://i.pinimg.com/736x/63/85/77/6385777d0a939739c85c2fbb0a1e3045.jpg" alt="">
+    </div>
+
+</body>
+
+<script>
+
+    let allBox = document.querySelectorAll(".box")
+    let lightBox = document.querySelector(".lightBox")
+    let span = document.querySelectorAll("span")
+
+
+    let allImg = []
+    let myIndex = null
+
+    allBox.forEach((all, index) => {
+
+        allImg.push(all.children[0].src)
+
+        all.addEventListener("click", () => {
+            myIndex = index
+
+
+            lightBox.classList.add("active")
+            lightBox.children[3].src = allImg[myIndex]
+        })
+
+    })
+
+    span[0].addEventListener("click", () => {
+        lightBox.classList.remove("active")
+    })
+
+    span[2].addEventListener("click", () => {
+
+
+
+        if (allImg.length - 1 > myIndex) {
+            myIndex++
+            lightBox.children[3].src = allImg[myIndex]
+        }
+        else{
+            lightBox.classList.remove("active")
+        }
+
+
+
+    })
+
+    console.log(myIndex)
+
+
+
+
+</script>
+
+</html>
