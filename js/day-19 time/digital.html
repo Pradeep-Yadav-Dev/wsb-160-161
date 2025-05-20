@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #ccc;
+        }
+        .main{
+            width: 500px;
+            border: 5px solid red;
+            margin: 150px auto;
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+
+<body>
+        <div class="main">
+            <h1>0 :</h1>
+            <h1>0 : </h1>
+            <h1> 0 :</h1>
+            <h1> AM</h1>
+        </div>
+</body>
+<script>
+
+    let allH=document.querySelectorAll("h1")
+
+    console.log(allH[3])
+
+
+    setInterval(() => {
+
+        let myDate = new Date()
+        
+        let Hour=myDate.getHours();
+        let min=myDate.getMinutes();
+        let sec=myDate.getSeconds();
+
+
+        if(Hour>12){
+            allH[0].innerHTML=Hour-12 + "&nbsp; &nbsp;  :" ;
+        }
+        
+        allH[1].innerHTML=min + "&nbsp; &nbsp;  :";
+
+
+        allH[2].innerHTML=sec + "&nbsp; &nbsp;  :";
+
+        if(Hour > 12){
+            allH[3].innerHTML="PM" 
+        }
+        else{
+                 allH[3].innerHTML="AM"
+        }
+    }, 1000)
+
+
+</script>
+
+</html>

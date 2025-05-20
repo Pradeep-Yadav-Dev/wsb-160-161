@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 800px;
+            margin: 20px auto;
+            border: 5px solid red;
+            padding: 10px;
+            position: relative;
+        }
+
+        .allBtn {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+
+        }
+
+        .allBtn button {
+            border: none;
+            outline: none;
+            padding: 15px 30px;
+            font-size: 22px;
+            background-color: aquamarine;
+        }
+
+        .allImg {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .allImg img {
+            width: 23%;
+            margin: 1%;
+            height: 200px;
+        }
+
+        .sliderBtn button:nth-child(1) {
+            position: absolute;
+            top: 30px;
+            left: 10px;
+        }
+
+        .sliderBtn button:nth-child(2) {
+            position: absolute;
+            top: 30px;
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="main">
+        <div class="allBtn">
+
+
+        </div>
+
+        <div class="sliderBtn">
+            <button onclick="pre()"> < </button>
+            <button onclick="next()"> > </button>
+        </div>
+
+        <div class="allImg">
+           
+           
+        </div>
+    </div>
+</body>
+<script>
+
+    let Data = [
+        {
+            id: 1,
+            title: "Nature",
+            images: ["https://i.pinimg.com/736x/09/47/db/0947db859f8bbec51f4f85d030c59b03.jpg", "https://i.pinimg.com/736x/4c/f1/ae/4cf1ae175fa5f287c3a823cf39e791fe.jpg", "https://i.pinimg.com/736x/cb/a6/2a/cba62abeb96a5f2a40d3080a4741365a.jpg", "https://i.pinimg.com/736x/d0/52/21/d05221b5dd0d4a1c3056384b4b597d15.jpg"]
+        },
+        {
+            id: 2,
+            title: "bike",
+            images: ["https://i.pinimg.com/736x/dc/95/b2/dc95b22fd4ba68530a22f0891a7efcae.jpg", "https://i.pinimg.com/736x/4a/80/2d/4a802d375e59062b8188f0fea29de5f0.jpg", "https://i.pinimg.com/736x/95/59/67/955967d7a30d1eb83c9bef23c1460102.jpg", "https://i.pinimg.com/736x/b4/84/04/b4840408ca9fc1621d205890eca6a0e8.jpg"]
+        }
+        ,
+        {
+            id: 3,
+            title: "hills",
+            images: ["https://i.pinimg.com/736x/5b/de/bc/5bdebcfa4102e3983d6a925581c42603.jpg", "https://i.pinimg.com/736x/01/ac/2b/01ac2be75e26ff0d66c40f9990b83dcb.jpg", "https://i.pinimg.com/736x/8e/58/18/8e581800b7ed71f8f6cae70a3a986cce.jpg", "https://i.pinimg.com/736x/45/4b/71/454b71bd6d1beaefd448b6eb9d9dc1b4.jpg"]
+        }
+        ,
+        {
+            id: 4,
+            title: "Viart",
+            images: ["https://i.pinimg.com/736x/35/3c/c7/353cc73b5aeeb4285df263bbb364694f.jpg", "https://i.pinimg.com/736x/e7/3b/7e/e73b7e47cd31eb33920589cf0874c345.jpg", "https://i.pinimg.com/736x/fe/49/f0/fe49f01a0a68b992e88512cc9062220d.jpg", "https://i.pinimg.com/736x/1b/09/3c/1b093c7f416f9b142fe9c9fcb32715ff.jpg"]
+        }
+    ]
+
+
+    let allBtn = document.querySelector(".allBtn")
+    let allImg = document.querySelector(".allImg")
+
+    let cuurentIndex = 0
+
+    const displayTabs = () => {
+        allBtn.innerHTML = ""
+
+        let filderTabs = Data.slice(cuurentIndex, cuurentIndex + 2);
+        filderTabs.forEach((v, i) => {
+            allBtn.innerHTML += `
+                <button onclick="showImg(${cuurentIndex+i})" > ${v.title} </button>
+            `
+        })
+    }
+
+    const next = () => {
+        if (cuurentIndex < Data.length - 2) {
+            cuurentIndex++
+            displayTabs()
+        }
+    }
+    const pre = () => {
+        if (cuurentIndex>0) {
+            cuurentIndex--
+            displayTabs()
+        }
+    }
+
+    let showImg=(Index)=>{
+        allImg.innerHTML=""
+
+        Data[Index].images.forEach((v)=>{
+            allImg.innerHTML+=`
+                 <img src=${v} alt="">
+            `
+        })
+    }
+
+    displayTabs()
+    showImg(0)
+
+</script>
+
+</html>

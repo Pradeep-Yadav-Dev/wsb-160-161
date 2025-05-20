@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .modal{
+            width: 500px;
+            height: 200px;
+            background-color: red;
+            position: fixed;
+            top: -100%;
+            left: 40%;
+            transition: 1s;
+        }
+
+        .active{
+            top: 10% !important;
+        }
+    </style>
+</head>
+<body>
+        <div class="modal ">
+            modal  
+            <span> X </span>
+        </div>
+</body>
+<script>
+    let modal=document.querySelector(".modal")
+    let span=document.querySelector("span")
+
+    setTimeout( ()=>{
+        modal.classList.add("active")
+    } , 2000 )
+
+    span.addEventListener("click",()=>{
+        modal.classList.remove("active")
+    })
+
+</script>
+</html>
