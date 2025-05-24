@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 1000px;
+            padding: 10px;
+            background-color: #ccc;
+            margin: 50px auto;
+        }
+
+        .main h2 {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .row {
+            width: 95%;
+            margin: 10px 0px;
+        }
+
+        .row input {
+            width: 100%;
+            padding: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            height: 120px;
+            resize: none;
+        }
+
+        button {
+            padding: 10px 35px;
+            background-color: aqua;
+            font-size: 22px;
+        }
+
+        p {
+            color: red;
+        }
+
+        .main2 {
+            width: 1200px;
+            margin: auto;
+        }
+
+        .main2 table {
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <h2> User Application Form </h2>
+
+        <form onsubmit="userForm(event)">
+            <div class="row">
+                <input type="text" name="Uname" placeholder="enter name">
+                <p></p>
+            </div>
+            <div class="row">
+                <input type="email" name="Uemail" placeholder="enter email">
+            </div>
+            <div class="row">
+                <input type="number" name="Unumber" placeholder="enter phone number">
+            </div>
+            <div class="row">
+                <textarea name="Uaddress" placeholder="enter your address"></textarea>
+            </div>
+            <div class="row">
+                <button> Save </button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="main2">
+        <table border="2">
+            <thead>
+                <td>sr.</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Phone Number</td>
+                <td>Address</td>
+                <td> <button onclick="DeleteAll()" >Delete All</button> </td>
+            </thead>
+
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<script>
+
+    let allP = document.querySelectorAll("p")
+    let tbody=document.querySelector("tbody")
+
+
+    let userForm = (event) => {
+        event.preventDefault()
+
+        let userObj = {
+            name: event.target.Uname.value,
+            email: event.target.Uemail.value,
+            number: event.target.Unumber.value,
+            address: event.target.Uaddress.value,
+        }
+
+
+        // if (userObj.name == "") {
+        //     return allP[0].innerHTML = "please enter name "
+        // }
+
+        // if (userObj.email == "") {
+        //     return alert("Please enter email")
+        // }
+
+        // if (userObj.number == "") {
+        //     return alert("Please enter number")
+
+
+        // }
+        // if (userObj.number.length != 10) {
+        //     return alert("Please enter 10 digits")
+        // }
+
+        // if (userObj.address == "") {
+        //     return alert("Please enter address")
+        // }
+
+        // get set
+
+        let oldData = JSON.parse(localStorage.getItem("wsb-151-153")) || []
+        let allData = [...oldData, userObj]
+        localStorage.setItem("wsb-151-153", JSON.stringify(allData))
+
+        displayData()
+    }
+
+
+    const displayData=function(){
+        let localData=JSON.parse(localStorage.getItem("wsb-151-153")) || []
+
+       tbody.innerHTML=""
+
+       localData.forEach( (v,i)=>{
+        tbody.innerHTML+=`
+            <tr>
+                    <td> ${i+1} </td>
+                    <td> ${v.name} </td>
+                    <td>${v.email}</td>
+                    <td>${v.number}</td>
+                    <td>${v.address}</td>
+                    <td> <button onclick="singleDelete(${i})"  >Delete</button> </td>
+                </tr>
+        `
+       } )
+
+
+    }
+
+    displayData()
+
+
+    let DeleteAll=()=>{
+        localStorage.clear()
+        displayData()
+    }
+
+
+    let singleDelete=(id)=>{
+        let localData=JSON.parse(localStorage.getItem("wsb-151-153")) || []
+
+        let newData=localData.filter((v,i)=>{
+            if(i!=id){
+                return v
+            }
+        })
+
+        console.log(newData)
+
+        localStorage.setItem("wsb-151-153" ,JSON.stringify(newData) )
+         displayData()
+
+
+    }
+
+
+
+
+
+
+</script>
+
+</html>
