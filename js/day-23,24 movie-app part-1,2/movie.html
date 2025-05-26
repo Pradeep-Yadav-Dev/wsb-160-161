@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+
+        .main {
+            max-width: 1200px;
+
+            margin: auto;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+        }
+
+        .row {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 21%;
+            margin: 1%;
+            padding: 10px;
+            background-color: rgb(227, 227, 153);
+            border-radius: 10px;
+        }
+
+        .box img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .downDiv {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pagination {
+            width: 800px;
+            margin: auto;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .pagination li {
+            padding: 10px 20px;
+            background-color: rosybrown;
+            margin: 5px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1> Movie App </h1>
+        <input type="text" placeholder="enter movie name" class="movieName">
+
+        <div class="row"></div>
+
+        <ul class="pagination">
+            
+        </ul>
+    </div>
+</body>
+<script>
+
+    let row = document.querySelector(".row")
+    let movieName = document.querySelector(".movieName")
+    let pagination = document.querySelector(".pagination")
+
+
+    // pagination
+    for(let i=1 ; i<=10 ; i++){
+        
+        pagination.innerHTML+= `<li onclick="getpage(${i})" > ${i} </li>`
+    }
+
+     let getpage=(myPage)=>{
+       
+        displayData(null,myPage)
+     }
+
+    // get move name
+    movieName.addEventListener("keyup", (e) => {
+        displayData(e.target.value)
+    })
+
+    //show all box
+    const displayData = async (movieName,myPage=1) => {
+
+        let newApi;
+
+        if (movieName == undefined || movieName == "") {
+            newApi = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=${myPage}`
+        }
+        else {
+            newApi = `https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=${movieName}`
+        }
+
+
+
+
+        let api = await fetch(newApi)
+
+
+        let response = await api.json()
+        let allData = await response.results
+
+        row.innerHTML = ""
+
+
+        allData.forEach((v, i) => {
+            row.innerHTML += `
+                        
+            <div class="box">
+                <img src=${"https://image.tmdb.org/t/p/w1280" + v.poster_path}/>
+                <div class="downDiv">
+                    <h3> ${v.original_title} </h3>
+                    <h3> ${v.release_date} </h3>
+                </div>
+            </div>
+
+            `
+        })
+
+    }
+
+    displayData()
+
+
+    // let pradeep=(a,b)=>{
+    //     console.log(a,b)
+    // }
+
+    // pradeep(10,20)
+
+
+</script>
+
+</html>
