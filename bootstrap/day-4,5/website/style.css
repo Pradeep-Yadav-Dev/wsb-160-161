@@ -1,0 +1,41 @@
+*{
+    list-style: none;
+}
+/* topHeader */
+.topHeader img{
+    width: 80px;
+    
+}
+.headerBottom{
+    background-color: #4C4C50;
+}
+
+/* slider */
+.carousel-indicators {
+   
+    bottom: -36px !important;
+    
+}
+
+/* singleImg */
+.singleImg{
+    /* border: 2px solid red; */
+     margin: 20px 0px;
+     height: 190px;
+     background-image: url("https://static.aceomni.cmsaceturtle.com/prod/banner-images/web/Desktop-Sign-In.jpg");
+     background-repeat: no-repeat;
+     background-size: 100%;
+     background-position: 0% 0%;
+}
+
+.mainBox{
+    width: 100%;
+    border: 2px solid red;
+    overflow-x: scroll;
+    
+}
+.mainBox .box{
+    width: 200px !important;
+    margin: 10px;
+   
+}
