@@ -1,0 +1,17 @@
+@media only screen and (min-width:200px) and (max-width:567px){
+    .headerBottom{
+        font-size: 12px;
+    }
+
+
+    .singleImg{
+    /* border: 2px solid red; */
+     margin: 20px 0px;
+     height: 50px;
+     /* border: 2px solid red; */
+     background-image: url("https://static.aceomni.cmsaceturtle.com/prod/banner-images/web/Desktop-Sign-In.jpg");
+     background-repeat: no-repeat;
+     background-size: 100%;
+     background-position: 0% 0%;
+}
+}

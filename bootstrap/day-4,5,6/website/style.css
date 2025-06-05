@@ -22,6 +22,7 @@
     /* border: 2px solid red; */
      margin: 20px 0px;
      height: 190px;
+     /* border: 2px solid red; */
      background-image: url("https://static.aceomni.cmsaceturtle.com/prod/banner-images/web/Desktop-Sign-In.jpg");
      background-repeat: no-repeat;
      background-size: 100%;
@@ -30,12 +31,18 @@
 
 .mainBox{
     width: 100%;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     overflow-x: scroll;
     
 }
-.mainBox .box{
-    width: 200px !important;
-    margin: 10px;
+/* .mainBox div{
+    width: 800px !important;
+    margin: 5px;
+    border: 1px solid;
    
+} */
+
+.mainBox div img{
+    width: 300px;
+    margin: 10px;
 }
