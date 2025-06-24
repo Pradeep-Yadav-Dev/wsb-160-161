@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+
+
+
+h1{
+    font-weight: bold;
+    font-size: 22px;
+}
+
+/* header .logo img{
+    max-width: 100%;
+   
+} */
+
+form input{
+    width: 100%;
+    padding: 10px;
+   
+    margin: 10px;
+    border-radius: 10px;
+    background-color:#F8F8F8;
+    /* background-color: #ccc; */
+    
+}
+
+.row2 a{
+    padding: 0;
+}
