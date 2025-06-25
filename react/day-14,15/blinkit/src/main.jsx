@@ -11,12 +11,12 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
 
     <BrowserRouter>
-    <Routes>
-       <Route path='/' element={<App />} />
-       <Route path='/buymenu' element={<Buymenu/>} />
-       <Route path='/checkout' element={<Checkout/>} />
-    </Routes>
+      <Routes>
+        <Route path='/' element={<App />} />
+        <Route path='/buymenu' element={<Buymenu />} />
+        <Route path='/checkout/:id' element={<Checkout />} />
+      </Routes>
     </BrowserRouter>
-   
+
   </StrictMode>,
 )

@@ -7,13 +7,21 @@ import axios from 'axios'
 export default function Buymenu() {
 
   const [pData, setPData] = useState([])
+  const [updateUrl,setUpdateUrl]=useState("")
 
-  const getUrl=useCallback((url)=>{
-    console.log(url)
-  },[])
-
+  console.log(updateUrl)
+ 
   let displayData = () => {
-    axios.get("https://dummyjson.com/products?limit=200")
+    let Api;
+
+    if(updateUrl==""){
+      Api="https://dummyjson.com/products?limit=200"
+    }
+    else{
+      Api=updateUrl
+    }
+
+    axios.get(Api)
       .then((ress) => {
         setPData(ress.data.products)
       })
@@ -41,9 +49,17 @@ export default function Buymenu() {
 
   useEffect(() => {
     displayData()
-    showCat()
 
-  }, [])
+  }, [updateUrl])
+
+  useEffect(()=>{
+     showCat()
+  },[])
+
+  // get url work
+let getUrl=useCallback((cat)=>{
+ setUpdateUrl(cat)
+},[])
 
 
   
@@ -66,7 +82,7 @@ export default function Buymenu() {
                 ?
                 storeCat.map((v, i) => {
                   return (
-                    <Category item={v} key={i}   />
+                    <Category item={v} key={i}  getUrl={getUrl}  />
                   )
                 })
                 :
@@ -111,14 +127,13 @@ const Card = ({ item }) => {
       <div className=" rounded-lg shadow-lg border  p-2 relative me-[8px] ">
         {/* Offer Badge */}
         <div className="absolute top-2 left-2 bg-blue-600 text-white text-xs px-1 py-0.5 rounded-sm">
-          {item.discountPercentage} % OFF
+          <span> ID : {item.id} </span>
         </div>
-
-
+        
 
         {/* Product Image */}
         <div className="w-full  flex justify-center items-center mb-2">
-          <Link to={"/checkout"}  > <img
+          <Link to={`/checkout/${item.id}`}  > <img
             src={item.thumbnail}
             alt="product"
             className=" w-full"
@@ -130,6 +145,8 @@ const Card = ({ item }) => {
         <div className="text-green-700 text-xs flex items-center gap-1 mb-1">
           <span>Rating </span>
           <span> {item.rating} </span>
+
+          
         </div>
 
         {/* Product Title */}
@@ -157,12 +174,12 @@ const Card = ({ item }) => {
 
 
 
-const Category = ({ item }) => {
+const Category = ({ item ,getUrl}) => {
 
 
   return (
 
-    <li  class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">{item.name}</li>
+    <li onClick={()=>getUrl(item.url) } class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">{item.name}</li>
 
   )
 }
