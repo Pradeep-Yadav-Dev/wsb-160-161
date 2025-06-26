@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { CiSearch } from "react-icons/ci";
 import { IoCartSharp } from "react-icons/io5";
+import { Link } from 'react-router-dom';
+import { BlinkitContext } from '../context/WebsiteContext';
 
 export default function Header() {
-
+ let {cart}=useContext(BlinkitContext)
     const module = ()=>{
         alert("Login Form")
     }
@@ -13,7 +15,7 @@ export default function Header() {
             <header className='bg-[white] w-[100%] flex '>
 
                 <div className="logo max-w-[10%]  py-[30px] px-[20px] ">
-                    <img src="src\assets\blinkitlogo.svg" alt="" />
+                   <Link to={"/"} >  <img src="src\assets\blinkitlogo.svg" alt="" /> </Link>
                 </div>
 
                 <div className="delivry  py-[10px] px-[20px] w-[20%] ">
@@ -32,10 +34,12 @@ export default function Header() {
                     <div className="login  w-[50%] text-center py-[25px] px-[30px] text-[18px] cursor-pointer" onClick={module}>
                         Login
                     </div>
-                    <div className="cart  w-[50%]  py-[15px]  px-[20px]  ">
+                    <div className="cart  w-[80%]  py-[15px]  px-[20px]  ">
+                        <Link  to={"/cart"}>
                         <div className="card  flex items-center bg-[#E5E5E5] py-[10px] ps-[20px]  rounded px-[5px]">
-                            <IoCartSharp />   My Cart
+                            <IoCartSharp />   My Cart <sup className=' text-[red] font-bold text-[18px] '> {cart.length} </sup>
                         </div>
+                        </Link>
                     </div>
 
                 </div>
