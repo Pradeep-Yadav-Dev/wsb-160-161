@@ -49,7 +49,7 @@ export default function Checkout() {
       quantity:1
 
     }
-
+    
     // console.log("productObj",productObj)
     setCart([...cart,productObj])
     toast.success("added !")
