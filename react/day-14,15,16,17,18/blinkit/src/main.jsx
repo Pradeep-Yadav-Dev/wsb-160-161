@@ -8,6 +8,7 @@ import Buymenu from './Buymenu.jsx'
 import Checkout from './Checkout.jsx'
 import Cart from './Cart.jsx'
 import WebsiteContext from './context/WebsiteContext.jsx'
+import Login from './Login.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -20,6 +21,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/buymenu' element={<Buymenu />} />
           <Route path='/checkout/:id' element={<Checkout />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/login' element={<Login/>} />
         </Routes>
       </BrowserRouter>
 

@@ -31,9 +31,11 @@ export default function Header() {
                 </div>
 
                 <div className="usercard flex w-[20%]">
-                    <div className="login  w-[50%] text-center py-[25px] px-[30px] text-[18px] cursor-pointer" onClick={module}>
+                    <Link to={"/login"} >
+                        <div className="login  w-[50%] text-center py-[25px] px-[30px] text-[18px] cursor-pointer" >
                         Login
                     </div>
+                    </Link>
                     <div className="cart  w-[80%]  py-[15px]  px-[20px]  ">
                         <Link  to={"/cart"}>
                         <div className="card  flex items-center bg-[#E5E5E5] py-[10px] ps-[20px]  rounded px-[5px]">
