@@ -1,10 +1,13 @@
 import React from 'react'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from './FireConfig';
+import Cookies from "js-cookie"
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
     const provider = new GoogleAuthProvider();
     const auth = getAuth(app);
+     let routes=useNavigate()
 
     let loginWork = () => {
         const auth = getAuth();
@@ -17,9 +20,10 @@ export default function Login() {
                 const user = result.user;
                 // IdP data available using getAdditionalUserInfo(result)
 
-                console.log("token",token)
-                 console.log("user",user)
-                 console.log("credential",credential)
+               
+
+                 Cookies.set('blinkit-token', token, { expires: 7 })
+                 routes("/")
                 // ...
             }).catch((error) => {
                 // Handle Errors here.
