@@ -2,7 +2,7 @@ for imag ,https://form-backend-by-py.onrender.com/uploads/1733934135144-6366f7f4
 
 view , https://form-backend-by-py.onrender.com/api/website/user/getuser
 post , https://form-backend-by-py.onrender.com/api/website/user/register
-delete  , https://form-backend-by-py.onrender.com/api/website/user/multi-user-delete
+
 post   , https://form-backend-by-py.onrender.com/api/website/user/seleted-user-delete
 delete , https://form-backend-by-py.onrender.com/api/website/user/single-user-delete/:id
 
