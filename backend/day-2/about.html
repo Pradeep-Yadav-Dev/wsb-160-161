@@ -1,0 +1,4 @@
+async function json(stream) {
+  const str = await text(stream);
+  return JSONParse(str);
+}
