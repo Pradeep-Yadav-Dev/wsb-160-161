@@ -16,7 +16,7 @@ let checkToken = (req, res, next) => {
 
 let getInfo=(req,res,next)=>{
 
-    fs.appendFileSync("data.txt" , `Time is ${Date.now()} And Routes is ${req.url} And Method is ${req.method} \n ` )
+    fs.appendFileSync("data.txt",`Time is ${Date.now()} And Routes is ${req.url} And Method is ${req.method} \n ` )
     next()
 }
 
