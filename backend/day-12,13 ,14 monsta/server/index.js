@@ -4,10 +4,12 @@ const { adminRouter } = require("./src/routes/app")
 const app=express()
 var cors = require('cors')
 require("dotenv").config()
+const path=require("path")
 
 db()
 app.use(cors())
 app.use(express.json())
+app.use("/upload",express.static(path.join(__dirname, "/uploads" ,)))
 
 app.use("/admin",adminRouter)
 
