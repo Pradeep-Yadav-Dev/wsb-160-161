@@ -91,7 +91,7 @@ export default function Home() {
 
   const handleClose = () => setShow(false);
   const [editData, setEditData] = useState({})
-  const [editId,setEditId]=useState("")
+  const [editId, setEditId] = useState("")
 
   const handleShow = (id) => {
     setShow(true)
@@ -99,8 +99,8 @@ export default function Home() {
 
     axios.get(`https://form-backend-by-py.onrender.com/api/website/user/single-user/${editId}`)
       .then((ress) => {
-        
-       setEditData(ress.data.data)
+
+        setEditData(ress.data.data)
       })
       .catch((error) => {
         console.log(error)
@@ -121,17 +121,17 @@ export default function Home() {
   }
 
 
-  let editUserForm=(e)=>{
-     e.preventDefault()
-     let userObj={
-      name:e.target.name.value,
-      email:e.target.email.value
-     }
+  let editUserForm = (e) => {
+    e.preventDefault()
+    let userObj = {
+      name: e.target.name.value,
+      email: e.target.email.value
+    }
 
-     
-     axios.put(`https://form-backend-by-py.onrender.com/api/website/user/update-user/${editId}` , userObj  )
-     .then((ress) => {
-       console.log(ress.data)
+
+    axios.put(`https://form-backend-by-py.onrender.com/api/website/user/update-user/${editId}`, userObj)
+      .then((ress) => {
+        console.log(ress.data)
       })
       .catch((error) => {
         console.log(error)
@@ -282,31 +282,31 @@ export default function Home() {
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form  onSubmit={editUserForm} >
+            <Form onSubmit={editUserForm} >
               <Form.Group className="mb-3" >
                 <Form.Label>Enter Name</Form.Label>
-                <Form.Control type="text" name="name" defaultValue={editData.name}  placeholder="Enter Name" />
+                <Form.Control type="text" name="name" defaultValue={editData.name} placeholder="Enter Name" />
 
               </Form.Group>
 
 
               <Form.Group className="mb-3" >
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" name="email" defaultValue={editData.email}  placeholder="Enter email" />
+                <Form.Control type="email" name="email" defaultValue={editData.email} placeholder="Enter email" />
 
               </Form.Group>
 
 
               <Form.Group className="mb-3" >
                 <Form.Label>contact</Form.Label>
-                <Form.Control type="text" name="contact" defaultValue={editData.contact}  placeholder="Enter contact" />
+                <Form.Control type="text" name="contact" defaultValue={editData.contact} placeholder="Enter contact" />
 
               </Form.Group>
 
 
               <Form.Group className="mb-3" >
                 <Form.Label>Enter Gender</Form.Label>
-                <input type="radio" className="mx-3" name="gender" value={"male"} defaultChecked={editData.gender}/> Male
+                <input type="radio" className="mx-3" name="gender" value={"male"} defaultChecked={editData.gender} /> Male
                 <input type="radio" className="mx-3" name="gender" value={"female"} defaultChecked={editData.gender} /> Female
 
               </Form.Group>
@@ -323,7 +323,7 @@ export default function Home() {
               <Form.Group className="mb-3" >
                 <Form.Label>address</Form.Label>
                 <br />
-                <textarea  name="address" placeholder="enter address" defaultValue={editData.address} className="w-75 p-5" ></textarea>
+                <textarea name="address" placeholder="enter address" defaultValue={editData.address} className="w-75 p-5" ></textarea>
 
               </Form.Group>
 

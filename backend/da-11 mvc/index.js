@@ -9,6 +9,7 @@ db()
 app.use(express.json())
 
 app.use("/admin",adminRouter)
+
 app.use(websiteRouter)
 app.use(appRouter)
 

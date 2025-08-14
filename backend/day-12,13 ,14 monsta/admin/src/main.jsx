@@ -39,6 +39,7 @@ import ViewFaq from "./Pages/Faq/ViewFaq.jsx";
 import Users from "./Pages/Users.jsx";
 import Newsletters from "./Pages/NewsLetters.jsx";
 import Enquiry from "./Pages/Enquirys.jsx";
+import UpdateMaterial from "./Pages/Meterials/Updatemeterials.jsx";
 
 
 
@@ -63,7 +64,7 @@ const route = createBrowserRouter(
         
         <Route path="material">
           <Route path="add" element={<Addmeterials />}></Route>
-          <Route path="update/:id?" element={<Addmeterials />}></Route>
+          <Route path="update/:id?" element={<UpdateMaterial />}></Route>
           <Route path="view" element={<ViewMeterials />}></Route>
         </Route>
 
