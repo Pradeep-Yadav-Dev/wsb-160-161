@@ -10,6 +10,18 @@ const storage = multer.diskStorage({
             folderName="uploads/parentCategory"
         }
         
+        if(file.fieldname=="subCategoryImage"){
+            folderName="uploads/subCategory"
+        }
+
+         if(file.fieldname=="subSubCategoryImage"){
+            folderName="uploads/subSubCategory"
+        }
+
+        if(file.fieldname=="productImage" || file.fieldname=="backImage" || file.fieldname=="galleryImage"){
+            folderName="uploads/product"
+        }
+        
 
         next(null, folderName)
     },

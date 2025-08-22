@@ -75,9 +75,9 @@ const viewMaterial = async (req, res) => {
         let data = await Materials.find(searchQuery)
             .limit(limit)
             .skip(skip)
+            .sort({order:-1})
 
-        let total = await Materials.find(searchQuery)
-            .countDocuments()
+        let total = await Materials.countDocuments(searchQuery)
 
 
 
@@ -164,8 +164,6 @@ const findData = async (req, res) => {
 
 const editMaterial = async (req, res) => {
     try {
-
-
         let data = await Materials.findByIdAndUpdate(req.params, { $set: req.body })
         res.status(200).json({ message: " Data Update Successfully " })
     }

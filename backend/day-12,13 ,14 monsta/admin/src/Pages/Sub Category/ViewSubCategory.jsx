@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Breadcrumb from '../../common/Breadcrumb'
 import { Link } from 'react-router-dom';
 import { MdFilterAltOff, MdModeEdit, MdModeEditOutline } from 'react-icons/md';
 import { CiEdit } from 'react-icons/ci';
 import { FaFilter } from 'react-icons/fa';
+import axios from 'axios';
 // import { MdModeEditOutline } from "react-icons/md";
 
 export default function ViewCategory() {
@@ -11,6 +12,22 @@ export default function ViewCategory() {
 
   let [activeFilter, setactiveFilter] = useState(true);
   let [activeDropDown, setactiveDropDown] = useState(false);
+
+  const [storeData, setStoreData] = useState([])
+
+   const [filePath, setfilePath] = useState("")
+
+  let displayData = () => {
+    axios.get(`${import.meta.env.VITE_API_URL}/sub-category/view`)
+      .then((ress) => {
+        setStoreData(ress.data.data)
+        setfilePath(ress.data.filePath)
+      })
+  }
+
+  useEffect(() => {
+    displayData()
+  }, [])
   return (
     <section className="w-full">
 
@@ -103,17 +120,20 @@ export default function ViewCategory() {
                         </div>
                       </th>
                       <th scope="col" class="px-6 py-3">
-                      Parent Category Name
+                        Parent Category Name
                       </th>
                       <th scope="col" class="px-0 py-3">
                         Sub Category Name
                       </th>
-                      
+
                       <th scope="col" class=" w-[12%] ">
                         Image
                       </th>
                       <th scope="col" class=" w-[10%] ">
                         Order
+                      </th>
+                       <th scope="col" class=" w-[10%] ">
+                        Slug
                       </th>
                       <th scope="col" class="w-[10%]  ">
                         Status
@@ -124,45 +144,56 @@ export default function ViewCategory() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="bg-white  dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
-                      <td class="w-4 p-4">
-                        <div class="flex items-center">
-                          <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                          <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                        </div>
-                      </td>
-                      <td scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
 
-                        <div class="py-4">
-                          Shoe
+                    {storeData?.map((v) => {
+                      return (
+                        <>
+                          <tr class="bg-white  dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="w-4 p-4">
+                              <div class="flex items-center">
+                                <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                              </div>
+                            </td>
+                            <td scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
 
-                        </div>
-                      </td>
-                      <td class=" py-4">
-                        Men
+                              <div class="py-4">
+                                {v.parentCategory?.categoryName}
 
-                      </td>
+                              </div>
+                            </td>
+                            <td class=" py-4">
+                              {v.subCategoryName}
 
-                      <td class=" py-4">
-                        <img class="w-10 h-10 rounded-full" src="https://packshifts.in/images/iso.png" alt="Jese image" />
-                      </td>
-                      <td class=" py-4">
-                        1
-                      </td>
-                      <td class=" py-4">
+                            </td>
 
-                        <button type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-1.5 text-center me-2 mb-2">Active</button>
-                      </td>
-                      <td class=" py-4">
+                            <td class=" py-4">
+                              <img class="w-10 h-10 rounded-full" src={filePath + v.subCategoryImage} alt="Jese image" />
+                            </td>
+                            <td class=" py-4">
+                              {v.order}
+                            </td>
+                             <td class=" py-4">
+                              {v.slug}
+                            </td>
+                            <td class=" py-4">
 
-                        <Link to={`/category/sub-category/update/${2222}`} >
-                          <div className="rounded-[50%] w-[40px] h-[40px] flex items-center justify-center text-white bg-blue-700  border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <MdModeEdit className='text-[18px]' />
-                          </div>
-                        </Link>
+                              <button type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-1.5 text-center me-2 mb-2">Active</button>
+                            </td>
+                            <td class=" py-4">
 
-                      </td>
-                    </tr>
+                              <Link to={`/category/sub-category/update/${2222}`} >
+                                <div className="rounded-[50%] w-[40px] h-[40px] flex items-center justify-center text-white bg-blue-700  border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                  <MdModeEdit className='text-[18px]' />
+                                </div>
+                              </Link>
+
+                            </td>
+                          </tr>
+                        </>
+                      )
+                    })}
+
 
 
 

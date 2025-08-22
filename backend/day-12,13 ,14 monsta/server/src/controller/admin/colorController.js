@@ -18,8 +18,8 @@ const addColor=async(req,res)=>{
 const viewColor=async(req,res)=>{
      try {
 
-       
-        let data=await Colors.find()   
+       let data=await Colors.find().select({"colorName"})
+
         res.status(200).json({ message: " Color view Successfully ",data })
     }
     catch (error) {

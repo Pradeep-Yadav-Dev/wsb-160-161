@@ -5,6 +5,7 @@ import "dropify/dist/js/dropify.min.js";
 import Breadcrumb from "../../common/Breadcrumb";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function AddSubCategory() {
   useEffect(() => {
@@ -17,27 +18,36 @@ export default function AddSubCategory() {
       }
     });
   }, []);
-  
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
 
-  const onSubmit = (data) => {
-    
-  };
-  // update work
-  const [updateIdState, setUpdateIdState] = useState(false)
-  let updateId = useParams().id
+
+
+  const [activePCat, setActivePCat] = useState([])
+
+
+
+  let activeParentCat = () => {
+    axios.get("http://localhost:5600/admin/sub-category/active-parent-category")
+      .then((ress) => {
+        setActivePCat(ress.data.data)
+      })
+  }
+
+  let saveForm = (e) => {
+    e.preventDefault()
+    axios.post(`${import.meta.env.VITE_API_URL}/sub-category/add`, e.target)
+      .then((ress) => {
+       alert(ress.data.message)
+      })
+      .catch((error) => {
+        alert(error.response.data.message)
+      })
+  }
+
   useEffect(() => {
-    if (updateId == undefined) {
-      setUpdateIdState(false)
-    }
-    else {
-      setUpdateIdState(true)
-    }
-  }, [updateId])
+    activeParentCat()
+  }, [])
+
+
 
   return (
     <section className="w-full">
@@ -47,7 +57,7 @@ export default function AddSubCategory() {
           <h3 className="text-[26px] font-semibold bg-slate-100 py-3 px-4 rounded-t-md border border-slate-400">
             Add Sub Category
           </h3>
-          <form onSubmit={handleSubmit(onSubmit)} autoComplete="off" className="border border-t-0 p-3 rounded-b-md border-slate-400">
+          <form onSubmit={saveForm} className="border border-t-0 p-3 rounded-b-md border-slate-400">
             <div className="flex gap-5">
               <div className="w-1/3">
                 <label
@@ -59,28 +69,40 @@ export default function AddSubCategory() {
                 <input
                   type="file"
                   accept="image/*"
-                  {...register("categoryImage", { required: "Category image is required" })}
+                  name="subCategoryImage"
                   id="categoryImage"
                   className="dropify"
                   data-height="230"
                 />
-                {errors.categoryImage && <p className="text-red-500">{errors.categoryImage.message}</p>}
+
               </div>
 
               <div className="w-2/3">
-              {/* Parent Category Dropdown */}
-              <div className="mb-5">
+                {/* Parent Category Dropdown */}
+                <div className="mb-5">
                   <label className="block  text-md font-medium text-gray-900">
-                    Parent Category Name
+                    Parent Category 
                   </label>
                   <select
-                    name="parentCatSelectBox"
+                    name="parentCategory"
                     className="border-2 border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
                   >
                     <option value="">Select Category</option>
-                    <option value="Mens">Men's</option>
-                    <option value="Women">Women</option>
-                    <option value="Sale">Sale</option>
+
+                    {activePCat.length > 0
+                      ?
+                      activePCat.map((v) => {
+                        return (
+                          <>
+                            <option value={v._id}> {v.categoryName} </option>
+                          </>
+                        )
+                      })
+                      :
+                      "Not Category Found"
+                    }
+
+
                   </select>
                 </div>
 
@@ -93,12 +115,12 @@ export default function AddSubCategory() {
                   </label>
                   <input
                     type="text"
-                    {...register("categoryName", { required: "Category name is required" })}
+                    name="subCategoryName"
                     id="categoryName"
                     className="text-[19px] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-3"
                     placeholder="Category Name"
                   />
-                  {errors.categoryName && <p className="text-red-500">{errors.categoryName.message}</p>}
+
                 </div>
 
                 <div className="mb-5">
@@ -110,14 +132,31 @@ export default function AddSubCategory() {
                   </label>
                   <input
                     type="text"
-                    {...register("Order", { required: "Category Order is required" })}
+                    name="order"
                     id="categoryName"
                     className="text-[19px] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-3"
                     placeholder="Category Order"
                   />
-                  {errors.Order && <p className="text-red-500">{errors.Order.message}</p>}
+
                 </div>
-                
+
+                <div className="mb-5">
+                  <label
+                    htmlFor="categoryName"
+                    className="block  text-md font-medium text-gray-900"
+                  >
+                    Slug
+                  </label>
+                  <input
+                    type="text"
+                    name="slug"
+                    id="categoryName"
+                    className="text-[19px] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-3"
+                    placeholder="slug-just-like-this"
+                  />
+
+                </div>
+
               </div>
 
 
@@ -126,7 +165,7 @@ export default function AddSubCategory() {
               type="submit"
               className="focus:outline-none my-5 text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5"
             >
-              {updateIdState ? "Update Sub Category" : "Add Sub Category"}
+              Add Sub Category
             </button>
           </form>
 

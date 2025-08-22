@@ -3,11 +3,18 @@ const mongoose = require("mongoose")
 const parentCategorySchema = new mongoose.Schema({
     parentCategoryImage: {
         type: String,
-        
+
     },
     categoryName: {
         type: String,
-        required: true
+        required: true,
+        unique: true
+    },
+    slug:{
+        type:String,
+        //  required: true,
+        //  unique:true,
+         trim:true
     },
     order: {
         type: Number,
@@ -17,9 +24,11 @@ const parentCategorySchema = new mongoose.Schema({
         type: Boolean,
         default: true
     }
+}, {
+    timestamps: true
 })
 
-const ParentCategory=mongoose.model("ParentCategory",parentCategorySchema)
+const ParentCategory = mongoose.model("ParentCategory", parentCategorySchema)
 
 
-module.exports=ParentCategory
+module.exports = ParentCategory
