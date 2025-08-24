@@ -18,7 +18,7 @@ const addColor=async(req,res)=>{
 const viewColor=async(req,res)=>{
      try {
 
-       let data=await Colors.find().select({"colorName"})
+       let data=await Colors.find()
 
         res.status(200).json({ message: " Color view Successfully ",data })
     }
@@ -27,6 +27,9 @@ const viewColor=async(req,res)=>{
         res.status(500).json({ message: "internal server error" })
     }
 }
+
+
+
 
 module.exports={
     addColor,

@@ -25,8 +25,7 @@ export default function ProductDetails() {
 
   // get color
   const [colorStore,setColorStore]=useState([])
-  console.log(colorStore)
-  
+
   useEffect(()=>{
      axios.get(`${import.meta.env.VITE_API_URL}/product/active-color`)
      .then((ress)=>{
@@ -35,8 +34,68 @@ export default function ProductDetails() {
 
   },[])
 
+  // get /active-material
+  const [materialStore,setMaterialStore]=useState([])
+  useEffect(()=>{
+     axios.get(`${import.meta.env.VITE_API_URL}/product/active-material`)
+     .then((ress)=>{
+      setMaterialStore(ress.data.data)
+     })
+
+  },[])
+
+
+  // get /active-parent-category
+  const [parentCategoryStore,setParentCategoryStore]=useState([])
+  useEffect(()=>{
+     axios.get(`${import.meta.env.VITE_API_URL}/product/active-parent-category`)
+     .then((ress)=>{
+      setParentCategoryStore(ress.data.data)
+     })
+
+  },[])
+
+  // get /active-sub-category/:_id
+  const [parentCategoryId,setparentCategoryId]=useState("")
+
+  const [subCategoryStore,setSubCategoryStore]=useState([])
+
   
-  
+  useEffect(()=>{
+     axios.get(`${import.meta.env.VITE_API_URL}/product/active-sub-category/${parentCategoryId}`)
+     .then((ress)=>{
+      setSubCategoryStore(ress.data.data)
+     })
+
+  },[parentCategoryId])
+
+  // active-sub-sub-category/:_id
+  const [subCategoryId,setSubCategoryId]=useState("")
+  const [subSubCategoryStore,setSubSubCategoryStore]=useState([])
+
+  useEffect(()=>{
+     axios.get(`${import.meta.env.VITE_API_URL}/product/active-sub-sub-category/${subCategoryId}`)
+     .then((ress)=>{
+      setSubSubCategoryStore(ress.data.data)
+     })
+
+  },[subCategoryId])
+
+  //////////////////////////////////////////////////////////////////////// saveForm
+  const saveForm=(e)=>{
+    e.preventDefault();
+    let formData=new FormData(e.target)
+    formData.append("description",value)
+
+    axios.post(`${import.meta.env.VITE_API_URL}/product/add`, formData )
+    .then((response) => {
+      alert(response.data.message)
+    })
+    .catch((error) => {
+      // Handle error
+    });
+  }
+
   return (
     <section className="w-full">
 
@@ -66,7 +125,7 @@ export default function ProductDetails() {
 
       <div className='w-full px-6 py-6  '>
 
-        <form >
+        <form  onSubmit={saveForm} >
           <div className="grid grid-cols-3 gap-[10px] ">
             {/* for left */}
             <div className="for-images ">
@@ -122,6 +181,7 @@ export default function ProductDetails() {
                   className="dropify"
                   data-height="160"
                   name='galleryImage'
+                  multiple
                   
                 />
                 
@@ -157,12 +217,10 @@ export default function ProductDetails() {
                 </label>
                 <select
                   name='subCategory'
+                  onChange={(e)=>setSubCategoryId(e.target.value)}
                   className="text-[19px] text-[#76838f] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2.5 px-3">
                   <option value="">Select Category</option>
-                  <option value="mobile">Mobile Phones</option>
-                  <option value="laptop">Laptops</option>
-                  <option value="men">Mens Wear</option>
-                  <option value="women">Womens Wear</option>
+                  {subCategoryStore.map((v)=>(<option key={v._id} value={v._id}>{v.subCategoryName}</option>))}
 
                 </select>
                 
@@ -178,16 +236,14 @@ export default function ProductDetails() {
                 </label>
                 <select
                   name='material'
-                  className="text-[19px] text-[#76838f] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2.5 px-3">
+                  className="text-[19px] text-[black] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2.5 px-3">
                   <option value="">Nothing Selected</option>
-                  <option value="">Neem</option>
-                  <option value="">Babbul</option>
-                  <option value="">Neem</option>
-                  <option value="">Babbul</option>
-                  <option value="">Neem</option>
-                  <option value="">Babbul</option>
-                  <option value="">Neem</option>
-                  <option value="">Babbul</option>
+                  {materialStore.map((material) => (
+                    <option key={material._id} value={material._id}>
+                      {material.materialName}
+                    </option>
+                  ))}
+                 
 
                 </select>
                 
@@ -204,11 +260,11 @@ export default function ProductDetails() {
                  name='productType'
                   className="text-[19px] text-[#76838f] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2.5 px-3">
                   <option value="">Nothing Selected</option>
-                  <option value="">Featured</option>
-                  <option value="">New Arrivals</option>
-                  <option value="">Onsale</option>
+                  <option value="featured">Featured</option>
+                  <option value="new arrivals">New Arrivals</option>
+                  <option value="onsale">Onsale</option>
 
-
+        
                 </select>
                
               </div>
@@ -224,8 +280,8 @@ export default function ProductDetails() {
                  name='topRated'
                   className="text-[19px] text-[#76838f] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2.5 px-3">
                   <option value="">Nothing Selected</option>
-                  <option value="">Yes</option>
-                  <option value="">No</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
 
                 </select>
                 
@@ -279,14 +335,11 @@ export default function ProductDetails() {
                 </label>
                 <select
                   name='parentCategory'
+                  onChange={(e)=>setparentCategoryId(e.target.value)}
                   className="text-[19px] text-[#76838f] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2.5 px-3">
                   <option value="">Nothing Selected</option>
 
-                  <option value="mobile">Mobile Phones</option>
-                  <option value="laptop">Laptops</option>
-
-                  <option value="men">Mens Wear</option>
-                  <option value="women">Womens Wear</option>
+                  {parentCategoryStore.map((v)=>(<option key={v._id} value={v._id}>{v.categoryName}</option>))}
 
                 </select>
                
@@ -304,12 +357,7 @@ export default function ProductDetails() {
                   className="text-[19px] text-[#76838f] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2.5 px-3">
                   <option value="">Nothing Selected</option>
 
-                  <option value="mobile">Mobile Phones</option>
-                  <option value="laptop">Laptops</option>
-
-                  <option value="men">Mens Wear</option>
-                  <option value="women">Womens Wear</option>
-
+                  {subSubCategoryStore.map((v)=>(<option key={v._id} value={v._id}>{v.subSubCategoryName}</option>))}
                 </select>
                
               </div>
@@ -350,8 +398,8 @@ export default function ProductDetails() {
                  name='bestSelling'
                   className="text-[19px] text-[#76838f] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2.5 px-3">
                   <option value="">Nothing Selected</option>
-                  <option value="">Yes</option>
-                  <option value="">No</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
 
                 </select>
                
@@ -368,8 +416,8 @@ export default function ProductDetails() {
                  name='upSell'
                   className="text-[19px] text-[#76838f] border-2 shadow-sm border-gray-300 text-gray-900 text-sm rounded-lg block w-full py-2.5 px-3">
                   <option value="">Nothing Selected</option>
-                  <option value="">Yes</option>
-                  <option value="">No</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
 
                 </select>
                

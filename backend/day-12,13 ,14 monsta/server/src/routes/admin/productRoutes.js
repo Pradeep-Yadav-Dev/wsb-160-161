@@ -1,5 +1,5 @@
 const express = require("express")
-const { addProduct, activeColor } = require("../../controller/admin/productController")
+const { addProduct, activeColor, activeMaterial, activeParentCategory, activeSubCategory, activeSubSubCategory } = require("../../controller/admin/productController")
 const upload = require("../../middleware/multer")
 
 
@@ -15,6 +15,10 @@ productRouter.post("/add",upload.fields(
 ), addProduct)   
 
 productRouter.get("/active-color", activeColor)
+productRouter.get("/active-material",activeMaterial)
+productRouter.get("/active-parent-category",activeParentCategory)
+productRouter.get("/active-sub-category/:_id",activeSubCategory)
+productRouter.get("/active-sub-sub-category/:_id",activeSubSubCategory)
 
 
 module.exports = productRouter
